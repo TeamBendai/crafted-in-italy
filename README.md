@@ -23,4 +23,4 @@ In caso di errori di visualizzazione del documento, si rimanda alla folder `pitc
 
 In caso di errori di visualizzazione del template, si rimanda alla folder `figma` nella [repository github](https://github.com/TeamBendai/crafted-in-italy/) di progetto. [E' stato realizzato anche un video](https://www.youtube.com/watch?v=2vHZLCVFOCY) che descrive in maniera dettagliata gli use case considerati dall'applicazione stessa. Inoltre, sempre nella folder `figma` su github è presente un documento (`use-cases.pdf`) contenente una descrizione integrativa di quanto riportato nel video.
 
-**Pitch**: [PITCH-DECK-Made-in-Italy-Innovation-Challenge-Bendai]()
+**Pitch**: [PITCH-DECK-Made-in-Italy-Innovation-Challenge-Bendai](https://youtu.be/04aePt-JkMA)
