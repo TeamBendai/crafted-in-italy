@@ -1,0 +1,67 @@
+<mxfile host="Electron" modified="2024-04-22T23:28:57.948Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.2.5 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="zoHDH9Beq__dvdvW2MC2" version="24.2.5" type="device">
+  <diagram name="Page-1" id="suwHcrlGPGi6ZHjn3lsl">
+    <mxGraphModel dx="1095" dy="2099" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="XSOStLrYY4_A5h06R-Th-1" value="Camere Commercio&lt;br&gt;(InfoCamere)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="210" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="XSOStLrYY4_A5h06R-Th-2" value="Agenzia delle Dogane e Monopoli" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="390" y="140" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="XSOStLrYY4_A5h06R-Th-3" value="AVEPA" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="250" y="290" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="XSOStLrYY4_A5h06R-Th-4" value="Agenzia delle Entrate" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="420" y="214" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="XSOStLrYY4_A5h06R-Th-5" value="AGID" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="390" y="290" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="XSOStLrYY4_A5h06R-Th-6" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Dematerializzazione&lt;/h1&gt;&lt;p&gt;Il supporto fisico di fatto è solo il codice alfanumerico della transazione.&lt;br&gt;In base all&#39;entità del prodotto può essere rappresentato anche come QR-Code o semplicemente stampato a laser/inchiostro anche dai meccanismi che riportano le date di scadenza sui prodotti.&lt;/p&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="50" y="400" width="270" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="XSOStLrYY4_A5h06R-Th-7" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Blockchain&lt;/h1&gt;&lt;p&gt;E&#39; il sistema di anti-contraffazione scelto. Le transazioni non possono essere contraffatte.&lt;/p&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="320" y="495" width="270" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="XSOStLrYY4_A5h06R-Th-8" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Entità &quot;trusted&quot;&lt;/h1&gt;&lt;p&gt;Dobbiamo capire come essere sicuri che le transazioni partano da entità sicure/note.&lt;/p&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="450" y="420" width="270" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="XSOStLrYY4_A5h06R-Th-10" value="Istituto Poligrafico e Zecca dello Stato" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="250" y="140" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="XSOStLrYY4_A5h06R-Th-11" value="" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/blockchain/Azure_Blockchain_Service.svg;" vertex="1" parent="1">
+          <mxGeometry x="330" y="210" width="68" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="XSOStLrYY4_A5h06R-Th-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="XSOStLrYY4_A5h06R-Th-13" target="XSOStLrYY4_A5h06R-Th-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="XSOStLrYY4_A5h06R-Th-13" value="" style="html=1;verticalLabelPosition=bottom;align=center;labelBackgroundColor=#ffffff;verticalAlign=top;strokeWidth=2;strokeColor=#0080F0;shadow=0;dashed=0;shape=mxgraph.ios7.icons.smartphone;" vertex="1" parent="1">
+          <mxGeometry x="827" y="80" width="30" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="XSOStLrYY4_A5h06R-Th-14" value="Utente" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="857" y="100" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="XSOStLrYY4_A5h06R-Th-18" value="Bottiglia olio" style="shape=mxgraph.pid.vessels.gas_bottle;html=1;pointerEvents=1;align=center;verticalLabelPosition=bottom;verticalAlign=top;dashed=0;" vertex="1" parent="1">
+          <mxGeometry x="680" y="-100" width="105" height="335" as="geometry" />
+        </mxCell>
+        <mxCell id="XSOStLrYY4_A5h06R-Th-15" value="bnb19tf6hd77jg7akyugh4864zfaaq42cvgg8f7hux" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;rotation=-90;" vertex="1" parent="1">
+          <mxGeometry x="730" y="80" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="XSOStLrYY4_A5h06R-Th-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.4;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="XSOStLrYY4_A5h06R-Th-13" target="XSOStLrYY4_A5h06R-Th-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="XSOStLrYY4_A5h06R-Th-19" value="bnb1u0uce2gp5y3dw388tgs27tcf906kkws7fmqw00" style="shape=mxgraph.signs.travel.baggage;html=1;pointerEvents=1;fillColor=#000000;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;" vertex="1" parent="1">
+          <mxGeometry x="840" y="-200" width="220" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="XSOStLrYY4_A5h06R-Th-21" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Autoverifica + segnalazione&lt;/h1&gt;&lt;p&gt;L&#39;utente finale, con l&#39;app/webapp può verificare dal codice transazione tutta la filiera produttiva. In caso di copia/invalidità del codice o altre problematiche può segnalare all&#39;autorità competente l&#39;eventuale frode che poi sarà presa in carico e verificata.&lt;/p&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="840" y="200" width="270" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="XSOStLrYY4_A5h06R-Th-23" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Ecosostenibilità&lt;br&gt;(energia rinnovabile)&lt;/h1&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="70" y="540" width="270" height="120" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,172 @@
+version: '3.7'
+
+services:
+  geth-bootnode:
+    hostname: geth-bootnode
+    env_file:
+      - .env
+    image: geth-client
+    build:
+      context: .
+      args:
+        - ACCOUNT_PASSWORD=${ACCOUNT_PASSWORD}
+    command:
+      --nodekeyhex="b0ac22adcad37213c7c565810a50f1772291e7b0ce53fb73e7ec2a3c75bc13b5"
+      --nodiscover
+      --ipcdisable
+      --networkid=${NETWORK_ID}
+      --netrestrict="172.16.254.0/28"
+    networks:
+      priv-eth-net:
+
+  geth-rpc-endpoint:
+    hostname: geth-rpc-endpoint
+    env_file:
+      - .env
+    image: geth-client
+    depends_on:
+      - geth-bootnode    
+    command:
+      --bootnodes="enode://af22c29c316ad069cf48a09a4ad5cf04a251b411e45098888d114c6dd7f489a13786620d5953738762afa13711d4ffb3b19aa5de772d8af72f851f7e9c5b164a@geth-bootnode:30303"
+      --allow-insecure-unlock
+      --http
+      --http.addr="0.0.0.0"
+      --http.api="eth,web3,net,admin,personal"
+      --http.corsdomain="*"
+      --networkid=${NETWORK_ID}
+      --netrestrict="172.16.254.0/28"
+      --rpcvhosts=*
+    ports:
+      - "8545:8545"
+    networks:
+      priv-eth-net:
+
+  geth-miner:
+    hostname: geth-miner
+    env_file:
+      - .env
+    image: geth-client
+    depends_on:
+      - geth-bootnode
+    command:
+      --bootnodes="enode://af22c29c316ad069cf48a09a4ad5cf04a251b411e45098888d114c6dd7f489a13786620d5953738762afa13711d4ffb3b19aa5de772d8af72f851f7e9c5b164a@geth-bootnode:30303"
+      --mine
+      --miner.threads=1
+      --networkid=${NETWORK_ID}
+      --netrestrict="172.16.254.0/28"
+    networks:
+      priv-eth-net:
+
+  explorer:
+    image: alethio/ethereum-lite-explorer
+    ports:
+      - "8080:80"
+    environment:
+      - APP_NODE_URL=http://localhost:8545
+    networks:
+      priv-eth-net:
+
+  expedition:
+    image: etclabscore/expedition
+    ports:
+      - 8081:80
+    networks:
+      priv-eth-net:
+    # open http://localhost:8081/?rpcUrl=http%3A%2F%2Flocalhost%3A8545
+
+  # only for Erigon nodes https://erigon.tech/
+  # otterscan:
+  #   image: otterscan/otterscan
+  #   environment:
+  #     - ERIGON_URL=http://localhost:8545
+  #   #  - BEACON_API_URL="$2"
+  #   ports:
+  #     - "8081:80"
+  #   networks:
+  #     priv-eth-net:
+
+  # https://github.com/web3labs/chainlens-free/tree/master/docker-compose
+  api:
+    image: web3labs/epirus-free-api:latest
+    environment:
+      - NODE_ENDPOINT=${NODE_ENDPOINT}
+      - MONGO_CLIENT_URI=mongodb://mongodb:27017
+      - REINDEX_ENDPOINT=http://ingestion/reindex/
+      - MONGO_DB_NAME=epirus
+      - MONGO_CREATE_INDICES=true
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    ports:
+      - 8090:8090
+    depends_on:
+      - redis 
+      - mongodb
+    networks:
+      - epirus
+  
+  mongodb:
+    image: mongo:5.0.8
+    environment:
+      - COMPOSE_HTTP_TIMEOUT=900
+      - DOCKER_CLIENT_TIMEOUT=900
+    entrypoint: mongod --bind_ip "0.0.0.0"
+    networks:
+      - epirus
+
+  redis:
+    image: redis
+    restart: unless-stopped
+    container_name: redis
+    networks:
+      - epirus
+
+  web:
+    image: web3labs/epirus-free-web:latest
+    environment:
+      - API_URL=/api
+      - WS_API_URL=ws://localhost:8090
+      - DISPLAY_NETWORK_TAB=disabled
+    depends_on:
+      - api
+    networks:
+      - epirus
+  
+  ingestion:
+    image: web3labs/epirus-free-ingestion:latest
+    environment:
+      - NODE_ENDPOINT=${NODE_ENDPOINT}
+      - MONGO_CLIENT_URI=mongodb://mongodb:27017
+      - MONGO_DB_NAME=epirus
+      - LIST_OF_METRICS_TO_CALCULATE_PER_MINUTE=hourly,daily,monthly,yearly
+    depends_on:
+      - mongodb
+      - redis
+    networks:
+      - epirus
+      
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./5xx.html:/www/error_pages/5xx.html
+    ports:
+      - ${PORT:-80}:80
+    depends_on:
+      - api
+      - web
+    networks:
+      - epirus
+
+networks:
+  priv-eth-net:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 172.16.254.0/28
+  epirus:
+    name: epirus-net
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.239.0/24

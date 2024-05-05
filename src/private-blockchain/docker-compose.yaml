@@ -1,0 +1,30 @@
+version: '3'
+
+# https://coinsbench.com/setup-a-private-blockchain-using-geth-and-docker-6060a1169e6f
+
+services:
+  node1:
+    build: 
+      context: .
+      dockerfile: node1/Dockerfile
+      args:
+        progress: plain
+    volumes:
+      - ./node1/home:/home
+    ports:
+      - 8545:8545
+    # image: ethereum/client-go
+    # ports:
+    #   - "8545:8545"
+    # volumes:
+    #   - ./node1:/root/.ethereum
+    # command: --dev --rpc --rpcaddr "0.0.0.0" --rpcport 8545 --rpcapi "eth,net,web3,personal" --networkid 100
+
+  explorer:
+    image: alethio/ethereum-lite-explorer
+    ports:
+      - "8080:80"
+    environment:
+      - APP_NODE_URL=http://node1:8545
+
+
